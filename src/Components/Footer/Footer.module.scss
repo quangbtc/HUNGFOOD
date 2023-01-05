@@ -1,0 +1,60 @@
+.wrapper{
+    display: flex;
+    justify-content: space-between;
+
+    background-color: gray;
+    padding: 50px;
+    gap: 20px;
+}
+.logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-image: linear-gradient(to right, rgb(0, 128, 128, 0.8), red);
+  color: white;
+  font-size: 50px;
+  font-weight: 600;
+  padding: 0px 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.8;
+  &:hover{
+      opacity: 1;
+  }
+
+}
+.column{
+   flex: 1;
+}
+// .title{
+//     font-size: larger;
+//     font-weight: bolder;
+//     padding: 10px;
+//     text-transform: uppercase;
+
+// }
+.contact{
+  
+
+}
+.categories{
+ 
+
+}
+.delivery{
+  
+}
+.list-item{
+    list-style: none;
+    margin: 0;
+  
+}
+.item{
+    
+    padding: 10px 12px;
+    cursor: pointer;
+    &:hover{
+        color: white;
+    }
+}
