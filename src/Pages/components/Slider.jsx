@@ -8,14 +8,13 @@ const cx = classNames.bind(styles);
 const Slider = ({ data,setting }) => {
     const {autoLoading,time}=setting
     const [index, setIndex] = useState(0);
-    console.log(index)
     const handleOnclick = (type) => {
         const lengthOfData = data.length;
         console.log("check lengh",lengthOfData)
         if (type === 'left') {
             index > 0 ? setIndex((prev) => prev - 1) : setIndex(lengthOfData-1);
         } else {
-            index <= lengthOfData - 1 ? setIndex((prev) => prev + 1) : setIndex(0);
+            index < lengthOfData - 1 ? setIndex((prev) => prev + 1) : setIndex(0);
         }
     };
     const styles = { 

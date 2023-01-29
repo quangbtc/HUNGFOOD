@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
 
-    background-color: gray;
+    background-color:#c5c5c5;
     padding: 50px;
     gap: 20px;
 }
@@ -27,13 +27,14 @@
 .column{
    flex: 1;
 }
-// .title{
-//     font-size: larger;
-//     font-weight: bolder;
-//     padding: 10px;
-//     text-transform: uppercase;
+.title{
+    font-size: larger;
+    font-weight: bolder;
+    padding: 10px;
+    text-transform: uppercase;
+    color: #215274;
 
-// }
+}
 .contact{
   
 
@@ -53,6 +54,7 @@
 .item{
     
     padding: 10px 12px;
+    color: #215274;
     cursor: pointer;
     &:hover{
         color: white;

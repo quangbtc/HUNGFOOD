@@ -1,0 +1,52 @@
+.modal{
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(15, 16, 16, 0.7);
+    z-index: 100;
+    
+}
+
+.img{
+    margin:0px auto;
+    width: 800px;
+    height: 500px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: 100;
+
+
+    
+}
+.icon-close{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: red;
+    top:0;
+    right: 0;
+ 
+
+    cursor: pointer;
+    opacity: 0.6;
+    &:hover{
+        opacity: 1;
+        color: white;
+    }
+
+    z-index: 110;
+
+    
+}

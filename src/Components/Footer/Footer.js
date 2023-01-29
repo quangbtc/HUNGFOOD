@@ -7,9 +7,9 @@ const cx=classNames.bind(styles)
 const Footer = () => {
   return (
     <div className={cx("wrapper")}>
-        <div className={cx('logo')}>
+        {/* <div className={cx('logo')}>
             HUNGFOOD
-        </div>
+        </div> */}
         <div className={cx('column contact')}>
             <h4 className={cx('title')}>Thong tin lien he</h4>
             <ul className={cx('list-item')}>

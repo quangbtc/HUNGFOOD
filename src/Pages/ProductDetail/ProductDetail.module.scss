@@ -1,0 +1,296 @@
+
+
+//LEFT
+.wrapper{
+    background-color: transparent;
+    margin: 50px 150px; 
+}
+//TOP CONTENT
+.top-content{
+    display: flex;
+    gap: 20px;
+  
+    
+}
+.left{
+    flex:1;
+    background-color: white;
+}
+.right{
+    flex: 2;
+    background-color: aliceblue;
+}
+
+//SLIDER
+.container{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    overflow: hidden;
+    
+
+    width: 100%;
+    height: 100%;
+    background-color:transparent;
+    
+
+}
+.arrow-left{
+   left: 0;
+
+}
+.arrow-right{
+    right: 0;
+}
+.arrow-right,.arrow-left{
+    background-color: rgb(127, 255, 212,0.5);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+   
+    cursor: pointer;
+    opacity: 0.5;
+    &:hover{
+        opacity: 1;
+        color: white;
+    }
+  
+}
+.wp-slider{
+    display: flex;
+    transition: all 1s ease;
+
+  
+}
+.slider{
+    width: 400px;
+    height: 400px;
+
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+
+
+}
+.img-contain{
+    width: 400px;
+    height: 400px;
+    
+  
+    
+}
+.img{
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+//  DETAIL PRODUCT
+.right{
+    padding: 10px 20px;
+
+}
+.title{
+    font-size: 24px;
+    padding: 5px 10px;
+    margin: 10px 0px;
+    font-weight: 600;
+    text-transform: uppercase;
+
+}
+.desc{
+
+}
+.list-item{
+    padding-left: 20px;
+
+}
+.item{
+        display: flex;
+        margin: 10px;
+
+}
+.label{
+    min-width:150px ;
+    font-weight: bolder;
+    margin-right: 20px;
+
+}
+.name{
+
+}
+.price{
+    color: white;
+    border-radius: 5px;
+    background-color: rgb(255, 0, 0,0.9);
+    padding: 5px 10px;
+    font-size: 20px;
+}
+.color{
+    display: flex;
+    gap:10px;
+    cursor: pointer;
+}
+.color-item{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    opacity: 0.5;
+
+}
+
+.size{
+    display: flex;
+    gap: 10px;
+}
+.size-item{
+    padding: 5px 10px;  
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: grey;
+    opacity: 0.5;
+}
+.qty{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    input{
+        width: 40px;
+        outline: none;
+        border: none;
+        text-align: center;
+        border-radius: 5px;
+        font-size: 20px;
+        padding: 5px 8px;
+    }
+    .remove,.add{
+        cursor: pointer;
+        &:hover{
+            color: red;
+        }
+    }
+  
+}
+.status{
+    background-color: green;
+    padding: 5px 8px;
+    border-radius:5px ;
+    color: white;
+}
+.pending{
+    background-color: red;
+}
+.active{
+    opacity: 1;
+    border: 1px solid black;
+}
+.button{
+    text-align: right;
+    button{
+        padding: 5px 10px;
+        font-size: 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        
+    }
+}
+.add-to-cart{
+    border: 1px solid red;
+    background-color: white;
+    margin-right: 20px;
+    &:hover{
+        background-color: red;
+        color: white;
+    }
+
+
+}
+.buy-now{
+    background-color: aquamarine;
+    outline: none;
+    border: none;
+    opacity: 0.8;
+    &:hover{
+        opacity: 1;
+        color: red;
+    }
+
+}
+//BOTTOM CONTENT
+.bottom-content{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin: 50px 0px;
+    padding: 20px;
+    .title{
+        background-color: antiquewhite;
+
+    }
+
+}
+.product-review{
+    background-color: aliceblue;
+    margin:20px 50px;
+    padding: 20px;
+   
+}
+.view-more{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button{
+        border: none;
+        background: transparent;
+        outline: none;
+        padding: 5px 10px;
+        color: blue;
+        opacity: 0.5;
+        &:hover{
+            opacity: 1;
+        }
+    }
+}
+//COMMENT
+.wrapper-comment{
+    margin-top: 50px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+}
+.comment-title{
+    h4{
+        padding: 20px;
+    }
+
+}
+.relation-product{
+    margin: 50px 0px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 20px;
+    .title{
+        padding: 10px 20px;
+        text-transform: uppercase;
+        font-size: 20px;
+
+    }
+
+}
+.wp-products{
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
