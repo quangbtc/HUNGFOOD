@@ -8,6 +8,7 @@ import {
     SearchOutlined,
     ShoppingCartOutlined,
 } from '@mui/icons-material';
+import { Badge } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 import TippyHeadless from '@tippyjs/react/headless';
@@ -54,12 +55,12 @@ const Header = () => {
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
     const user = useSelector((state) => state.user.currentUser);
-    const dispatch=useDispatch()
+    const dispatch = useDispatch();
     const deBounce = useDebounce(searchValue, 500);
 
-    const handleLogout=()=>{
-        dispatch(logOut())
-    }
+    const handleLogout = () => {
+        dispatch(logOut());
+    };
     const handleHideResult = () => {
         setShowResult(false);
     };
@@ -68,10 +69,9 @@ const Header = () => {
             setSearchResult([]);
             return;
         }
-        console.log(searchValue);
-        console.log(showResult);
+
         const fetchData = async () => {
-            let res = await ProductApi.searchProducts({
+            let res = await ProductApi.searchProduct({
                 q: searchValue,
             });
             if (res.data.length > 0) {
@@ -79,9 +79,9 @@ const Header = () => {
             }
         };
         fetchData();
-        console.log(searchResult);
         return () => {};
     }, [deBounce]);
+    const quantity = useSelector((state) => state.cart.quantity);
 
     return (
         <div className={cx('wrapper')}>
@@ -135,7 +135,7 @@ const Header = () => {
                 </div>
                 {user ? (
                     <div className={cx('profile')}>
-                        <Avatar  />
+                        <Avatar />
                         <span>{user.username}</span>
                     </div>
                 ) : (
@@ -143,16 +143,12 @@ const Header = () => {
                 )}
 
                 <div className={cx('menu')}>
-                
-
                     <div className={cx('wp-icon')}>
                         {user ? (
                             <Tippy content="Đăng xuất" placement="bottom">
                                 <button className={cx('icon')}>
                                     <Link to="/login" style={{ textDecoration: 'none' }}>
-                                        <LogoutOutlined 
-                                        onClick={handleLogout}
-                                        />
+                                        <LogoutOutlined onClick={handleLogout} />
                                     </Link>
                                 </button>
                             </Tippy>
@@ -180,9 +176,13 @@ const Header = () => {
                                 </div>
                             )}
                         >
-                            <button className={cx('icon')}>
-                                <ShoppingCartOutlined className={cx('cart')} />
-                            </button>
+                            <Link to={'/cart'}>
+                                <button className={cx('icon')}>
+                                    <Badge badgeContent={quantity} color="primary">
+                                        <ShoppingCartOutlined className={cx('cart')} />
+                                    </Badge>
+                                </button>
+                            </Link>
                         </TippyHeadless>
                     </div>
                 </div>

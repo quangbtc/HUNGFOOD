@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import MainLayout from './Layout/MainLayout/MainLayout';
 import Home from './Pages/Home/Home';
 import ProductLayout from './Layout/ProductLayout/ProductLayout';
-import ProductDetail from './Pages/ProductDetail/ProductDetail';
+import ProductDetail from './Pages/ProductDetail';
 import Product from './Pages/Product/Product';
 import Cart from './Pages/Cart/Cart';
 import Login from './Pages/Auth/Login';
@@ -12,8 +12,6 @@ import { useSelector } from 'react-redux';
 import NotFound from './Pages/NotFound';
 import Dashboard from './Pages/Dashboard';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
     const user = useSelector((state) => state.user.currentUser);

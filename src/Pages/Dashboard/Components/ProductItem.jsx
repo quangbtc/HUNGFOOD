@@ -1,23 +1,27 @@
-
-import React ,{memo}from 'react';
+import React, { memo } from 'react';
 import { Delete, Edit } from '@mui/icons-material';
 import { NumericFormat } from 'react-number-format';
 import { Table } from 'reactstrap';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+import { Link, useLocation } from 'react-router-dom';
 
 const ImgContainer = styled.div`
     width: 80px;
     height: 60px;
     border-radius: 5px;
-    background-image: url(${(props)=>props.bg});
-    background-position:center;
+    background-image: url(${(props) => props.bg});
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 `;
 
-const ProductItem = ({ data }) => {
-    console.log('check data',data)
+const ProductItem = ({ products, handleDeleteProductFromParent }) => {
+    const location=useLocation()
+    console.log(location)
+    const handleDeleteProduct = (id) => {
+        handleDeleteProductFromParent(id);
+    };
     return (
         <div>
             <Table hover>
@@ -34,19 +38,14 @@ const ProductItem = ({ data }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {data &&
-                        data.length > 0 &&
-                        data.map((item, index) => {
-                                console.log(item.img)
+                    {products &&
+                        products.length > 0 &&
+                        products.map((item, index) => {
                             return (
-                                <tr key={index}>
-                                    <th scope="row">{index+1}</th>
+                                <tr key={item._id}>
+                                    <th scope="row">{index + 1}</th>
                                     <td>
-                                        <ImgContainer
-                                        bg={item.img}
-                                        >
-                                            {/* <img className="img" src={item.img} alt="" /> */}
-                                        </ImgContainer>
+                                        <ImgContainer bg={item.img}></ImgContainer>
                                     </td>
                                     <td>{item.title}</td>
                                     <td>
@@ -58,10 +57,19 @@ const ProductItem = ({ data }) => {
                                             thousandSeparator=","
                                         />{' '}
                                     </td>
-                                    <td>{item.color[0] && item.color[0].label?item.color[0].label:""}</td>
-                                    <td>{item.size[0] &&item.size[0].label?item.size[0].label:""}</td>
+                                    <td>
+                                        {item.color[0] && item.color[0].label
+                                            ? item.color[0].label
+                                            : ''}
+                                    </td>
+                                    <td>
+                                        {item.size[0] && item.size[0].label
+                                            ? item.size[0].label
+                                            : ''}
+                                    </td>
                                     <td>{item.inStock}</td>
                                     <td>
+                                        <Link to={`${location.pathname}/edit/${item._id}`}>
                                         <Edit
                                             sx={{
                                                 fontSize: 30,
@@ -71,8 +79,9 @@ const ProductItem = ({ data }) => {
                                                 '&:hover': {
                                                     color: 'red',
                                                 },
-                                            }}
+                                            }}                        
                                         />
+                                        </Link>
                                         <Delete
                                             sx={{
                                                 fontSize: 30,
@@ -82,6 +91,7 @@ const ProductItem = ({ data }) => {
                                                     color: 'yellow',
                                                 },
                                             }}
+                                            onClick={() => handleDeleteProduct(item._id)}
                                         />
                                     </td>
                                 </tr>
@@ -93,7 +103,7 @@ const ProductItem = ({ data }) => {
     );
 };
 ProductItem.propTypes = {
-    data: PropTypes.array,
+    products: PropTypes.array,
 };
 
 export default memo(ProductItem);

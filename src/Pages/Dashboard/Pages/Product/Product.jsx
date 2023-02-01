@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useCallback } from 'react';
 import { Search } from '@mui/icons-material';
 import styled from 'styled-components';
-import ProductItem from '../Components/ProductItem';
-import ProductApi from '../../../api/Product';
+import ProductItem from '../../Components/ProductItem';
+import ProductApi from '../../../../api/Product';
 import { Link, useLocation } from 'react-router-dom';
-
+import Loading from "../../../../Components/Loading/Loading"
 const Container = styled.div`
     margin: 20px 50px;
 `;
@@ -58,7 +58,7 @@ const Button = styled.button`
     border: none;
     border-radius: 5px;
 
-    background-color: orange;
+    background-color: green;
     color: white;
     font-size: 18px;
     padding: 10px 20px;
@@ -97,25 +97,40 @@ const Filter = styled.div`
 const ListProduct = styled.div``;
 
 const Product = () => {
-    console.log('render')
-    const location=useLocation()
-    
+    const location = useLocation();
+    console.log('check parent render');
+
     const [products, setProducts] = useState([]);
-    useEffect(() => {
-        const getProducts = async () => {
-            try {
-                let res = await ProductApi.getAll();
-                console.log("check",res)
-                if (res && res.data){
-                    setProducts(res.data)
-                } 
-            } catch (error) {
-                console.log(error);
+    const [isLoading,setIsLoading]=useState(false)
+    const getProducts = useCallback(async () => {
+        try {
+            let res = await ProductApi.getAll();
+            if (res && res.data) {
+                setProducts(res.data);
             }
-        };
-        getProducts()
+        } catch (error) {
+            console.log(error);
+        }
     }, []);
-    
+    useEffect(() => {
+        console.log('check render useEffect')
+        getProducts();
+        //Clean
+        return () => {};
+    }, [isLoading]);
+
+    const handleDeleteProductFromParent = async (id) => {
+        try {
+            setIsLoading(true)
+            const res = await ProductApi.deleteProduct(id);
+           if(res.data){
+            setIsLoading(false)
+           }
+        } catch (error) {
+            setIsLoading(false)
+            console.log(error);
+        }
+    };
     return (
         <Container>
             <Header>
@@ -125,8 +140,8 @@ const Product = () => {
                         <input className="input" type="text" placeholder="Tim san pham" />
                         <Search className="icon-search" />
                     </WpSearch>
-                    <Link to={location.pathname+"/add"}>
-                    <Button>Thêm sản phẩm</Button>
+                    <Link to={location.pathname + '/add'}>
+                        <Button>Thêm sản phẩm</Button>
                     </Link>
                 </Title>
                 <Wrapper>
@@ -165,8 +180,16 @@ const Product = () => {
                 </Wrapper>
             </Header>
             <ListProduct>
-                <ProductItem data={products}/>
+                {products.length > 0 ? (
+                    <ProductItem
+                        products={products}
+                        handleDeleteProductFromParent={handleDeleteProductFromParent}
+                    />
+                ) : (
+                    'Khong co san pham nao'
+                )}
             </ListProduct>
+            {isLoading && <Loading type="spin" color="red"/>}
         </Container>
     );
 };

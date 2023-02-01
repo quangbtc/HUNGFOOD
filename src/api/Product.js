@@ -1,4 +1,4 @@
-import { publicRequest } from './requestMethod';
+import { publicRequest, publicRequestFile } from './requestMethod';
 
 const ProductApi = {
     getAll: (data) => {
@@ -10,7 +10,7 @@ const ProductApi = {
         return publicRequest.get(url);
     },
     searchProduct: (data) => {
-        const url = `/product/search?q=${data.q}`;
+        const url = `/product/find?q=${data.q}`;
         return publicRequest.get(url);
     },
     updateProduct: (id) => {
@@ -19,7 +19,11 @@ const ProductApi = {
     },
     createProduct: (data) => {
         const url = '/product/add';
-        return publicRequest.post(url, data);
+        return publicRequestFile.post(url, data);
+    },
+    deleteProduct: (id) => {
+        const url = `/product/delete/${id}`;
+        return publicRequest.delete(url);
     },
 };
 export default ProductApi;

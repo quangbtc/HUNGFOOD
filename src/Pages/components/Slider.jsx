@@ -10,7 +10,6 @@ const Slider = ({ data,setting }) => {
     const [index, setIndex] = useState(0);
     const handleOnclick = (type) => {
         const lengthOfData = data.length;
-        console.log("check lengh",lengthOfData)
         if (type === 'left') {
             index > 0 ? setIndex((prev) => prev - 1) : setIndex(lengthOfData-1);
         } else {
@@ -32,9 +31,6 @@ const Slider = ({ data,setting }) => {
       setIndex(0)
       clearInterval(timerId)
     }
-    
-   
-   
     return () => {
       clearInterval(timerId)
     };
@@ -57,7 +53,7 @@ const Slider = ({ data,setting }) => {
                                         src={
                                             data
                                                 ? item.img
-                                                : 'https://i.picsum.photos/id/58/1280/853.jpg?hmac=YO3QnOm9TpyM5DqsJjoM4CHg8oIq4cMWLpd9ALoP908'
+                                                : 'https://picsum.photos/200/300'
                                         }
                                         alt={item.title}
                                     />

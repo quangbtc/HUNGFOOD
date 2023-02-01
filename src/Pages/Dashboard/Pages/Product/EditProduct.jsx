@@ -2,11 +2,11 @@ import React, { useState, useRef } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import Select from 'react-select';
 import styled, { css } from 'styled-components';
-import ProductApi from '../../../api/Product';
-import MyEditor from './MyEditor';
+import ProductApi from '../../../../api/Product';
+import MyEditor from '../../Components/MyEditor';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Loading from '../../../Components/Loading/Loading';
+import Loading from '../../../../Components/Loading/Loading';
 import { Close, Add, Upload } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 
@@ -148,7 +148,7 @@ const Right = styled.div`
     flex: 1;
 `;
 //============END CSS==============
-const AddProduct = () => {
+const EditProduct = () => {
     const navigate = useNavigate();
     const [imgProduct, setImgProduct] = useState(null);
     const [content, setContent] = useState('');
@@ -346,7 +346,6 @@ const AddProduct = () => {
                                     type="text"
                                     name="saleOff"
                                     {...register('saleOff', {
-                                        required: 'This field is empty!',
                                         pattern: {
                                             value: /^[0-9\b]+$/,
                                             message: 'This field is number',
@@ -355,8 +354,6 @@ const AddProduct = () => {
                                 />
                                 {errors.saleOff && (
                                     <p style={{ color: 'red' }}>
-                                        {errors.saleOff?.type === 'required' &&
-                                            errors.saleOff.message}
                                         {errors.sale?.type === 'pattern' &&
                                             errors.saleOff.message}
                                     </p>
@@ -552,4 +549,4 @@ const AddProduct = () => {
     );
 };
 
-export default AddProduct;
+export default EditProduct;

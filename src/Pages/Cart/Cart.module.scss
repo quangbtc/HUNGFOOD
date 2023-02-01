@@ -29,7 +29,7 @@
         }
     }
 
-    .btn-checkout {
+    .btn-delete {
         border: 1px solid red;
 
         &:hover {
@@ -167,6 +167,16 @@
     border: 1px solid black;
     opacity: 1;
 }
+.action{
+    display: flex;
+    align-items: center;
+    color: red;
+    cursor: pointer;
+    opacity: 0.7;
+    &:hover{
+        opacity: 1;
+    }
+}
 
 .right {
     flex: 1;
@@ -185,8 +195,29 @@
     align-items: center;
     padding: 10px 0px;
 }
-.checkout{
+.total-checkout{
     color: red;
     font-size: 20px;
     font-weight: bolder;
 }
+.btn-checkout{
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    color:white;
+    background-color: rgb(10, 98, 10);
+    opacity: 0.7;
+    text-transform: uppercase;
+    &:hover{
+        opacity: 1;
+    }
+}
+.empty{
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    color: red;
+    
+}
+

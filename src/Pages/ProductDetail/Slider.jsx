@@ -7,10 +7,10 @@ import Modal from '../../Components/Modal/Modal';
 import { Fragment } from 'react';
 
 const cx = classNames.bind(styles);
-const Slider = ({ data }) => {
+const Slider = ({product}) => {
     const [index, setIndex] = useState(0);
     const [showModal, setShowModal] = useState(false);
-
+   const data=product.thumbs?product.thumbs:[]
     //Click to slide
     const handleOnclick = (type) => {
         const lengthOfData = data.length;
@@ -46,12 +46,12 @@ const Slider = ({ data }) => {
                         data.map((item, index) => {
                             return (
                                 <div className={cx('img-contain')} key={index}
-                                onClick={()=>handleShowImg(item.img)}
+                                onClick={()=>handleShowImg(item)}
                                 >
                                     <img
                                         className={cx('img')}
-                                        src={item.img}
-                                        alt={item.name}
+                                        src={item}
+                                        alt={item.title}
                                     />
                                
                                 </div>
@@ -63,7 +63,7 @@ const Slider = ({ data }) => {
                 <ArrowForward />
             </div>
         </div>
-        {showModal && <Modal img={data[index].img} ClickFromModal={ClickFromModal}/>}
+        {showModal && <Modal img={data[index]} ClickFromModal={ClickFromModal}/>}
         </Fragment>
     );
 };

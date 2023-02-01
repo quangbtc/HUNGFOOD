@@ -8,7 +8,6 @@ const Container = styled.div`
 `;
 const SidebarContainer=styled.div` 
         height: 100vh;
-        border: 1px solid red;
 `;
 
 const Content = styled.div`

@@ -5,7 +5,7 @@ const initialState = {
     isLoading: false,
     error: false,
 };
-export const userSlice = createSlice({
+const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
@@ -22,7 +22,6 @@ export const userSlice = createSlice({
         },
         logOut: (state) => {
             state.currentUser = null;
-            localStorage.clear();
         },
         signInStart: (state) => {
             state.isLoading = true;

@@ -145,6 +145,7 @@ const SignIn = () => {
     } = useForm();
     const dispatch=useDispatch()
     const onSubmit = (data) => {
+        console.log(data)
         if(data){
             signIn(dispatch,data)
         }

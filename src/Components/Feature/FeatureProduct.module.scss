@@ -61,7 +61,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
 
     gap: 2px;
 
@@ -107,16 +107,15 @@
 
 .name {
     padding: 5px;
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 0;
-
-    display: inline-block;
-    max-width: 100%;
-
-    white-space: nowrap;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    height: 3.6rem;
+    font-weight: 400;
+    margin: 5px;
     overflow: hidden;
-    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 
     cursor: pointer;
 
@@ -175,12 +174,12 @@
         vertical-align: middle;
         float: right;
         text-align: center;
-     
- 
+
+
         width: 24px;
         height: 24px;
         border-radius: 50%;
-        background-color: rgb(153, 132, 132,0.5);
+        background-color: rgb(153, 132, 132, 0.5);
 
     }
 

@@ -16,10 +16,10 @@ const MenuItem = ({ data }) => {
                         >
                             <img
                                 className={cx('thumb')}
-                                src={item.thumbnail}
-                                alt={item.name}
+                                src={item.img}
+                                alt={item.title}
                             />
-                            <p className={cx('name')}>{item.name}</p>
+                            <p className={cx('name')}>{item.title}</p>
                         </li>
                     ))}
                 </ul>

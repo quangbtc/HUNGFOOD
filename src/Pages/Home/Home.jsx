@@ -33,9 +33,9 @@ const Home = () => {
     return (
         <>
            <Slider data={dataSlide} setting={setting} />
-           <FeatureProduct products={featureProduct} title={'SẢN PHẨM BÁN CHẠY'}/>
-           <FeatureProduct products={featureProduct} title={'SẢN PHẨM NỔI BẬT'}/>
-           <FeatureProduct products={featureProduct} title={'SALE SẬP SÀN 50%'}/>
+           <FeatureProduct products={products} title={'SẢN PHẨM BÁN CHẠY'}/>
+           <FeatureProduct products={products} title={'SẢN PHẨM NỔI BẬT'}/>
+           <FeatureProduct products={products} title={'SALE SẬP SÀN 50%'}/>
         </>
     );
 };

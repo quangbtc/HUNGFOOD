@@ -1,23 +1,36 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 
 import { NumericFormat } from 'react-number-format';
-import { Add, Remove } from '@mui/icons-material';
+import { Add, Delete, Remove } from '@mui/icons-material';
 import { Divider } from '@mui/material';
 
 import classNames from 'classnames/bind';
-import styles from "./Cart.module.scss"
-const cx=classNames.bind(styles)
-const CartItem = () => {
-    const [qty, setQty] = useState([]);
-    const handleOnclick = () => {};
+import styles from './Cart.module.scss';
+import { useDispatch } from 'react-redux';
+import { removeCart, increase, decrease } from '../../Redux/cartSlice';
+const cx = classNames.bind(styles);
+const CartItem = ({ product, index }) => {
+    const [qty, setQty] = useState(product.quantity);
+    const dispatch = useDispatch();
+
+    const handleOnclickRemove = (id) => {
+        if (qty > 1) {
+            setQty((prev) => prev - 1);
+            dispatch(decrease({ index }));
+        }
+    };
+    const handleOnclickAdd = () => {
+        setQty((prev) => prev + 1);
+        dispatch(increase({ index }));
+    };
     const handleOnchangeInput = () => {};
+    const hanleRemoveCart = () => {
+        dispatch(removeCart(index));
+    };
     return (
         <div className={cx('container-left')}>
             <div className={cx('cart-img')}>
-                <img
-                    src="https://bizweb.dktcdn.net/thumb/large/100/415/697/products/den2-1663927933961.jpg?v=1663927942000"
-                    alt=""
-                />
+                <img src={product.img} alt={product.title} />
             </div>
             <div className={cx('cart-info')}>
                 <div className={cx('info')}>
@@ -26,17 +39,15 @@ const CartItem = () => {
                 </div>
                 <div className={cx('info')}>
                     <label className={cx('label')}>Tên sản phẩm:</label>
-                    <div className={cx('name')}>
-                        Iphone promax fasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasd
-                    </div>
+                    <div className={cx('name')}>{product.title}</div>
                 </div>
                 <div className={cx('info')}>
                     <label className={cx('label')}>Giá:</label>
                     <div className={cx('name')}>
                         <NumericFormat
                             displayType="text"
-                            value={200000}
-                            suffix={'  đ'}
+                            value={product.price}
+                            suffix={'  k'}
                             thousandSeparator=","
                         />
                     </div>
@@ -46,61 +57,42 @@ const CartItem = () => {
                     <div className={cx('name')}>
                         <button
                             className={cx('color', 'active')}
-                            style={{ backgroundColor: 'red' }}
-                        ></button>
-                        <button
-                            className={cx('color')}
-                            style={{ backgroundColor: 'blue' }}
-                        ></button>
-                        <button
-                            className={cx('color')}
-                            style={{ backgroundColor: 'yellow' }}
-                        ></button>
-                        <button
-                            className={cx('color')}
-                            style={{ backgroundColor: 'green' }}
+                            style={{ backgroundColor: `${product.color}` }}
                         ></button>
                     </div>
                 </div>
                 <div className={cx('info')}>
                     <label className={cx('label')}>Size:</label>
-                    <div className={cx('name')}>
-                        <select name="" id="" className={cx('size')}>
-                            <option value="" selected={true}>
-                                SM
-                            </option>
-                            <option value="">M</option>
-                            <option value="">L</option>
-                            <option value="">Xl</option>
-                        </select>
-                    </div>
+                    <div className={cx('name')}>{product.size}</div>
                 </div>
             </div>
             <div className={cx('cart-total')}>
                 <div className={cx('qty')}>
-                    <Remove className={cx('icon-remove')} 
-                    onClick={handleOnclick}
+                    <Remove
+                        className={cx('icon-remove')}
+                        onClick={() => handleOnclickRemove()}
                     />
                     <input
                         type="text"
                         min={1}
-                        value={1}
+                        value={qty}
                         onChange={(e) => handleOnchangeInput(e)}
                     />
-                    <Add className={cx('icon-add')} 
-                       onClick={handleOnclick}
-                    />
+                    <Add className={cx('icon-add')} onClick={() => handleOnclickAdd()} />
                 </div>
                 <Divider />
                 <div className={cx('sub-total')}>
                     <NumericFormat
                         displayType="text"
-                        value={500000}
-                        suffix={'  đ'}
+                        value={product.price * qty}
+                        suffix={'  k'}
                         thousandSeparator=","
                     />
                 </div>
             </div>
+            <span className={cx('action')} onClick={hanleRemoveCart}>
+                <Delete />
+            </span>
         </div>
     );
 };
