@@ -46,7 +46,9 @@ const Cart = () => {
                 );
                 console.log(res.data);
                 if (res.data) {
-                    navigate('/success');
+                    navigate('/success', {
+                        state: { stripeData: res.data, products: cart },
+                    });
                     dispatch(deleteAllCart());
                 }
             } catch (error) {
@@ -55,7 +57,7 @@ const Cart = () => {
         };
         stripeToken && cart.total > 1 && requestPayment();
         return () => {};
-    }, [stripeToken, navigate]);
+    }, [stripeToken, navigate, cart.total]);
 
     const deleteCart = () => {
         dispatch(deleteAllCart());
