@@ -49,7 +49,7 @@ export const featureProduct=[
         desc:"San pham thuoc hang cao cap nhap khau tu trung quoc",
         saleOff:20
     },
-    {
+    { 
         id:5,
         name:"QUan jean nam theo phong cach thoi thuong",
         categories:['jeans','lens'],

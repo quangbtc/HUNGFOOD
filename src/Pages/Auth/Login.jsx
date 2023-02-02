@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { login } from '../../Redux/apiCall';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
     background-image: url('https://wallpaperaccess.com/full/333783.jpg'),
@@ -130,18 +131,18 @@ const Register = styled.div`
         color: blue;
     }
 `;
-const Error =styled.ul`
+const Error = styled.ul`
     padding: 5px;
     list-style: none;
     background-color: rgba(137, 196, 244, 0.4);
     margin-left: 100px;
     border-radius: 5px;
-    li{
+    li {
         padding: 5px 10px;
-        color:red;
+        color: red;
         font-size: 13px;
     }
-`
+`;
 
 const Login = () => {
     const [value, setValue] = useState({
@@ -189,11 +190,18 @@ const Login = () => {
                     </Item>
                     {Object.keys(errors).length !== 0 && (
                         <Error>
-                            {errors.email?.type==='required' && <li>Vuil lòng nhập email!</li>}
-                            {errors.email?.type==='pattern' && <li>Email không hợp lệ!</li>}
-                            {errors.password?.type==='required' && <li>Vui lòng nhập mật khẩu!</li>}
-                            {errors.password?.type==='minLength' && <li>Mật khẩu phải lớn hơn 6 ký tự!</li>}
-
+                            {errors.email?.type === 'required' && (
+                                <li>Vuil lòng nhập email!</li>
+                            )}
+                            {errors.email?.type === 'pattern' && (
+                                <li>Email không hợp lệ!</li>
+                            )}
+                            {errors.password?.type === 'required' && (
+                                <li>Vui lòng nhập mật khẩu!</li>
+                            )}
+                            {errors.password?.type === 'minLength' && (
+                                <li>Mật khẩu phải lớn hơn 6 ký tự!</li>
+                            )}
                         </Error>
                     )}
 
@@ -209,7 +217,9 @@ const Login = () => {
                         <CheckBox type="checkbox" />
                         <Text>Remember Me ?</Text>
                     </RememberMe>
-                    <Register>Register</Register>
+                    <Link to={'/signin'}>
+                        <Register>Register</Register>
+                    </Link>
                 </Bottom>
             </Wrapper>
             <Mask></Mask>

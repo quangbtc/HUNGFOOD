@@ -11,7 +11,9 @@ import SignIn from './Pages/Auth/SignIn';
 import { useSelector } from 'react-redux';
 import NotFound from './Pages/NotFound';
 import Dashboard from './Pages/Dashboard';
+import Pay  from './Pages/Checkout/Pay';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Success from './Pages/Checkout/Success';
 
 const App = () => {
     const user = useSelector((state) => state.user.currentUser);
@@ -55,6 +57,18 @@ const App = () => {
                                 <ProductLayout>
                                     <Product />
                                 </ProductLayout>
+                            }
+                        />
+                          <Route
+                            path="/pay"
+                            element={
+                               <Pay/>
+                            }
+                        />
+                           <Route
+                            path="/success"
+                            element={
+                               <Success/>
                             }
                         />
                         <Route

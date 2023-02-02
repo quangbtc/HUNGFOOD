@@ -2,9 +2,8 @@ import axios from 'axios';
 
 const URL = process.env.REACT_APP_API_URL;
 
-const TOKEN =
-    JSON.parse(localStorage.getItem('persist:root')) &&
-    JSON.parse(localStorage.getItem('persist:root')).user
+const TOKEN =JSON.parse(localStorage.getItem('persist:root')) &&
+    JSON.parse(JSON.parse(localStorage.getItem('persist:root')).user).currentUser !== null
         ? JSON.parse(JSON.parse(localStorage.getItem('persist:root')).user).currentUser
               .accessToken
         : '';

@@ -9,6 +9,10 @@ const ProductApi = {
         const url = `/product/find/${id}`;
         return publicRequest.get(url);
     },
+    getSaleProducts: () => {
+        const url = `/product/saleoff`;
+        return publicRequest.get(url);
+    },
     searchProduct: (data) => {
         const url = `/product/find?q=${data.q}`;
         return publicRequest.get(url);
@@ -25,5 +29,6 @@ const ProductApi = {
         const url = `/product/delete/${id}`;
         return publicRequest.delete(url);
     },
+
 };
 export default ProductApi;

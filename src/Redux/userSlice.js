@@ -1,4 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, combineReducers } from '@reduxjs/toolkit';
+
+
 
 const initialState = {
     currentUser: null,
@@ -21,7 +23,9 @@ const userSlice = createSlice({
             state.isLoading = false;
         },
         logOut: (state) => {
-            state.currentUser = null;
+            state.currentUser=null;
+            localStorage.removeItem('persist:root');
+            
         },
         signInStart: (state) => {
             state.isLoading = true;
