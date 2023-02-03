@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Appbar from '../../Pages/Dashboard/Components/Appbar';
-import Sidebar from '../../Pages/Dashboard/Components/Sidebar';
+import Appbar from '../../Pages/Admin/Components/Appbar';
+import Sidebar from '../../Pages/Admin/Components/Sidebar';
 
 const Container = styled.div`
     display: flex;

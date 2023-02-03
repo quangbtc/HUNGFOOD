@@ -3,6 +3,9 @@
     align-items: center;
     padding: 5px 10px;
     gap: 20px;
+    @media screen and (max-width:480px) {
+       
+    }
 }
 .avatar{
     width: 50px;
@@ -11,4 +14,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    @media screen and (max-width:480px) {
+        margin: 10px 20px;
+    }
 }

@@ -3,6 +3,10 @@
     display: flex;
     flex-direction: column;
     padding: 0px 138px;
+    @media screen and (max-width:480px) {
+        margin: 0px auto;
+        padding: 20px 10px;
+    }
 }
 
 .head {
@@ -13,6 +17,8 @@
     justify-content: space-between;
     align-items: center;
     border-radius: 5px;
+  
+   
 }
 
 .title {
@@ -21,28 +27,12 @@
     font-size: 30px;
     letter-spacing: 5px;
     color: rgb(255, 0, 0, 0.9);
-}
-
-.sort-by {
-    padding: 0px 50px;
-    width: 200px;
-    border: none;
-    cursor: pointer;
-
-    select {
-        width: inherit;
-        border: none;
-        outline: none;
-        color: blue;
+    @media screen and (max-width:480px) {
         font-size: 20px;
-        background-color: aliceblue;
-        padding: 10px 12px;
-        border-radius: 5px;
+        padding-left: 10px;
     }
-
-
-
 }
+
 
 .content {
     width: 100%;
@@ -83,7 +73,10 @@
     margin: 5px 0px;
     position: relative;
 
-
+    @media screen and (max-width:480px) {
+        width: 100%;
+        height: auto;
+    }
 
 
 }
@@ -101,6 +94,10 @@
 
     &:hover {
         transform: scale(1.01);
+    }
+    @media screen and (max-width:480px) {
+       
+        height: auto;
     }
 
 }
@@ -122,6 +119,10 @@
     &:hover {
         color: red;
     }
+    @media screen and (max-width:480px) {
+        font-size: 18px;
+        padding: 10px;
+    }
 
 }
 
@@ -141,11 +142,19 @@
 .current-price {
 
     color: red;
-
+    @media screen and (max-width:480px) {
+        font-size: 18px;
+        padding: 10px;
+    }
 
 }
 
-.old-price {}
+.old-price {
+    @media screen and (max-width:480px) {
+        font-size: 18px;
+        padding: 10px;
+    }
+}
 
 .action {
     display: flex;
@@ -166,6 +175,13 @@
         &:hover {
             opacity: 1;
         }
+        @media screen and (max-width:480px) {
+            padding: 15px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            font-size: 20px;
+        }
 
     }
 
@@ -180,6 +196,13 @@
         height: 24px;
         border-radius: 50%;
         background-color: rgb(153, 132, 132, 0.5);
+        @media screen and (max-width:480px) {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
     }
 

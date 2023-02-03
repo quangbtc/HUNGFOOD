@@ -1,6 +1,10 @@
 .wrapper{
     width: 450px;
     margin: 0px auto;
+    @media screen and (max-width:480px) {
+        width: 100%;
+        margin: 10p 20px;
+    }
 
 }
 .title{
@@ -37,6 +41,9 @@
     }
     .name{
         flex:1;
+    }
+    @media screen and (max-width:480px) {
+        margin: 10px 20px;
     }
 
 }

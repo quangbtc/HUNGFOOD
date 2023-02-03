@@ -10,7 +10,7 @@ import Login from './Pages/Auth/Login';
 import SignIn from './Pages/Auth/SignIn';
 import { useSelector } from 'react-redux';
 import NotFound from './Pages/NotFound';
-import Dashboard from './Pages/Dashboard';
+import Dashboard from './Pages/Admin';
 import Pay  from './Pages/Checkout/Pay';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Success from './Pages/Checkout/Success';
@@ -96,7 +96,7 @@ const App = () => {
                             element={user ? <Navigate to="/" replace /> : <SignIn />}
                         />
                         <Route
-                            path="/dashboard/*"
+                            path="/admin/*"
                             exact
                             element={user && user.isAdmin ? <Dashboard /> : <NotFound />}
                         />

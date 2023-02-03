@@ -12,6 +12,7 @@ const cx = classNames.bind(styles);
 
 const ProductItem = ({ item, index }) => {
     const [value, setValue] = useState([]);
+    const [imgError, setImgError] = useState(false);
     const dispatch = useDispatch();
     const addToCart = () => {
         dispatch(
@@ -30,10 +31,11 @@ const ProductItem = ({ item, index }) => {
                     <img
                         className={cx('img')}
                         src={
-                            item.img ||
+                            (imgError && item.img) ||
                             'https://cf.shopee.vn/file/3230ecec15facec8d6878f11e17bdda5'
                         }
                         alt={item.title}
+                        onError={() => setImgError(true)}
                     />
                 </div>
 
