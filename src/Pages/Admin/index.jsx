@@ -2,11 +2,12 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import DashboardLayout from '../../Layout/DashboardLayout';
 import Product from './Pages/Product/Product';
-import Dashboard from './Pages/Dashboard';
+import Dashboard from './Pages/Dashboard/Dashboard';
 import AddProduct from './Pages/Product/AddProduct';
 import EditProduct from './Pages/Product/EditProduct';
+import User from "./Pages/User"
 
-const index = () => {
+const Index = () => {
     return (
         <div>
             <Routes>
@@ -46,9 +47,18 @@ const index = () => {
                         </DashboardLayout>
                     }
                 />
+                <Route
+                    path="/user"
+                    exact
+                    element={
+                        <DashboardLayout>
+                            <User />
+                        </DashboardLayout>
+                    }
+                />
             </Routes>
         </div>
     );
 };
 
-export default index;
+export default Index;

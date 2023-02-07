@@ -11,6 +11,7 @@ import { removeCart, increase, decrease } from '../../Redux/cartSlice';
 const cx = classNames.bind(styles);
 const CartItem = ({ product, index }) => {
     const [qty, setQty] = useState(product.quantity);
+    const [imgErr,setImgErr]=useState(false)
     const dispatch = useDispatch();
 
     const handleOnclickRemove = (id) => {
@@ -27,10 +28,13 @@ const CartItem = ({ product, index }) => {
     const hanleRemoveCart = () => {
         dispatch(removeCart(index));
     };
+   
     return (
         <div className={cx('container-left')}>
             <div className={cx('cart-img')}>
-                <img src={product.img} alt={product.title} />
+                <img src={(imgErr===false && product.img)?product.img:"https://cf.shopee.vn/file/3230ecec15facec8d6878f11e17bdda5"} alt={product.title} 
+                onError={()=> setImgErr(true)}
+                />
             </div>
             <div className={cx('cart-info')}>
                 <div className={cx('info')}>

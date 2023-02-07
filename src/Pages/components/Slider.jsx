@@ -45,9 +45,9 @@ const Slider = ({ data,setting }) => {
             style={styles}
             >
                 {data &&
-                    data.map((item) => {
+                    data.map((item,index) => {
                         return (
-                            <div className={cx('slider')}>
+                            <div className={cx('slider')} key={index}>
                                 <div className={cx('img-container')}>
                                     <img
                                         src={

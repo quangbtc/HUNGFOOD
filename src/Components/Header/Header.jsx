@@ -111,10 +111,27 @@ const Header = () => {
                     </TippyHeadless>
                 </div>
                 {user ? (
-                    <div className={cx('profile')}>
-                        <Avatar />
-                        <span>{user.username}</span>
-                    </div>
+                    <TippyHeadless
+                        placement="bottom"
+                        interactive={true}
+                        render={(attrs) => (
+                            <div className={cx('user-info')} tabIndex="-1" {...attrs}>
+                                <ul className={cx('user-list')}>
+                                    <li className={cx('user-list-item')}>
+                                        Thông tin cá nhân
+                                    </li>
+                                    <li className={cx('user-list-item')}>
+                                        Thông tin đơn hàng
+                                    </li>
+                                </ul>
+                            </div>
+                        )}
+                    >
+                        <div className={cx('profile')}>
+                            <Avatar />
+                            <span>{user.username}</span>
+                        </div>
+                    </TippyHeadless>
                 ) : (
                     ''
                 )}

@@ -31,14 +31,14 @@ const ProductItem = ({ item, index }) => {
                     <img
                         className={cx('img')}
                         src={
-                            (imgError && item.img) ||
-                            'https://cf.shopee.vn/file/3230ecec15facec8d6878f11e17bdda5'
+                            imgError===false && item.img
+                                ? item.img
+                                : 'https://cf.shopee.vn/file/3230ecec15facec8d6878f11e17bdda5'
                         }
                         alt={item.title}
                         onError={() => setImgError(true)}
                     />
                 </div>
-
                 <div className={cx('name')}>{item.title}</div>
             </Link>
             <div className={cx('price')}>

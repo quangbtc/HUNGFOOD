@@ -28,7 +28,7 @@ const FeatureProduct = ({ products, title }) => {
                 <div className={cx('list-item')}>
                     {products &&
                         products.map((item, index) => {
-                            return <ProductItem item={item} index={index} />;
+                            return <ProductItem item={item} index={index} key={index} />;
                         })}
                 </div>
             </div>
