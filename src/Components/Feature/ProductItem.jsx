@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 import styles from './FeatureProduct.module.scss';
 import Rating from '@mui/material/Rating';
 import { NumericFormat } from 'react-number-format';
-import { Add, ShoppingCart } from '@mui/icons-material';
+import { Add } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../../Redux/cartSlice';
 const cx = classNames.bind(styles);

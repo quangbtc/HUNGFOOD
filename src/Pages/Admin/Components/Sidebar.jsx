@@ -1,18 +1,13 @@
-import {useState} from "react"
 import {
     BookOnline,
     Dashboard,
     Diamond,
     Home,
     ListOutlined,
-    Menu,
     People,
-    PeopleAltOutlined,
     Settings,
-    SupportAgentOutlined,
 } from '@mui/icons-material';
 import { Divider } from '@mui/material';
-import { textAlign } from '@mui/system';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ipad } from '../../../responsive';
@@ -55,7 +50,7 @@ const Item = styled.li`
         alignItem: 'center',
         justifyContent: 'center',
     })}
-    background-color: ${props=>props.type===true?'goldenrod':''};
+    background-color: ${(props) => (props.type === true ? 'goldenrod' : '')};
 
     .icon {
         margin-right: 10px;
@@ -77,13 +72,12 @@ const Name = styled.span`
 const Theme = styled.div`
     display: flex;
     justify-content: center;
-    gap:20px;
+    gap: 20px;
 
     ${ipad({
-        width:"100%",
+        width: '100%',
         flexDirection: 'column',
-        alignItems:'center'
-
+        alignItems: 'center',
     })}
     .theme {
         width: 30px;
@@ -109,7 +103,7 @@ const MENU = [
         icon: <Home />,
         divider: false,
         path: '/',
-        active:true
+        active: true,
     },
     {
         id: 1,
@@ -117,7 +111,7 @@ const MENU = [
         icon: <ListOutlined />,
         divider: false,
         path: '/analys',
-        active:false
+        active: false,
     },
     {
         id: 2,
@@ -125,7 +119,7 @@ const MENU = [
         icon: <Dashboard />,
         divider: true,
         path: '/product',
-        active:false
+        active: false,
     },
     {
         id: 3,
@@ -133,7 +127,7 @@ const MENU = [
         icon: <People />,
         divider: false,
         path: '/user',
-        active:false
+        active: false,
     },
     {
         id: 4,
@@ -141,7 +135,7 @@ const MENU = [
         icon: <BookOnline />,
         divider: false,
         path: '/order',
-        active:false
+        active: false,
     },
     {
         id: 5,
@@ -149,20 +143,19 @@ const MENU = [
         icon: <Settings />,
         divider: true,
         path: '/setting',
-        active:false
+        active: false,
     },
 ];
 const Sidebar = () => {
-
-    const handleOnActive=(id)=>{
-        MENU.forEach((item)=>{
-            if(item.id===id){
-                item.active=true
-            }else{
-                item.active=false
+    const handleOnActive = (id) => {
+        MENU.forEach((item) => {
+            if (item.id === id) {
+                item.active = true;
+            } else {
+                item.active = false;
             }
-        })
-    }
+        });
+    };
     return (
         <Container>
             <Header>
@@ -178,11 +171,11 @@ const Sidebar = () => {
                                 <>
                                     {' '}
                                     <Link to={'/admin' + item.path} className="link">
-                                        <Item key={index}
+                                        <Item
+                                            key={index}
                                             type={item.active}
-                                            onClick={()=>handleOnActive(item.id)}
+                                            onClick={() => handleOnActive(item.id)}
                                         >
-
                                             <span className="icon"> {item.icon} </span>
                                             <Name> {item.name}</Name>
                                         </Item>

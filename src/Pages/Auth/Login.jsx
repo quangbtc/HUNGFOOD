@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { login } from '../../Redux/apiCall';
@@ -145,12 +145,8 @@ const Error = styled.ul`
 `;
 
 const Login = () => {
-    const [value, setValue] = useState({
-        email: '',
-        password: '',
-    });
     const dispatch = useDispatch();
-    const { isLoading, error } = useSelector((state) => state.user);
+    const { isLoading } = useSelector((state) => state.user);
     const {
         register,
         handleSubmit,

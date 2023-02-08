@@ -50,6 +50,7 @@ const Header = () => {
             let res = await ProductApi.searchProduct({
                 q: searchValue,
             });
+            console.log(res)
             if (res.data.length > 0) {
                 setSearchResult(res.data);
             }

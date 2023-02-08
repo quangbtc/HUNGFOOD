@@ -1,17 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import classNames from 'classnames/bind';
 import styles from './FeatureProduct.module.scss';
 
-import { Button, ButtonBase } from '@mui/material';
+import { Button } from '@mui/material';
 import ProductItem from './ProductItem';
 import { useNavigate } from 'react-router-dom';
 const cx = classNames.bind(styles);
 const FeatureProduct = ({ products, title }) => {
-    const [sort, setSort] = useState('');
-    const handleChange = (e) => {
-        setSort(e.target.value);
-    };
     const navigate = useNavigate();
     const handleToView = () => {
         return navigate('/product', { state: { products: products, title: title } });

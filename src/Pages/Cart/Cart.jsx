@@ -7,10 +7,8 @@ import { Divider } from '@mui/material';
 import { NumericFormat } from 'react-number-format';
 import CartItem from './CartItem';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { deleteAllCart } from '../../Redux/cartSlice';
-import CheckoutModal from '../../Components/CheckOutModal';
-import { Form, FormGroup, Input, Label, Button, Col, Row } from 'reactstrap';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 import Loading from '../../Components/Loading/Loading';
@@ -57,22 +55,12 @@ const Cart = () => {
         };
         stripeToken && cart.total > 1 && requestPayment();
         return () => {};
-    }, [stripeToken, navigate, cart.total]);
+    }, [stripeToken, navigate, cart,totalFee]);
 
     const deleteCart = () => {
         dispatch(deleteAllCart());
     };
 
-    //Chec user login
-    const currentUser = useSelector((state) => state.user.currentUser);
-
-    // const handleCheckout = () => {
-    //     //Show modal to fill infor customer
-    //     setModal(!modal);
-    // };
-    // const closeModal = () => {
-    //     setModal(!modal);
-    // };
     return (
         <div className={cx('wrapper')}>
             <div className={cx('cart-header')}>
