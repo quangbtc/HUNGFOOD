@@ -1,6 +1,6 @@
 import {publicRequest} from './requestMethod';
 const UserApi = {
-    getAllUser: (data) => {
+    getAllUser: () => {
         const url = '/user';
         return publicRequest.get(url);
 

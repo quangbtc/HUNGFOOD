@@ -1,7 +1,11 @@
 import { Delete, Edit } from '@mui/icons-material';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import moment from 'moment';
 import { Table } from 'reactstrap';
 import styled from 'styled-components';
+import { getAllUser } from '../../../../Redux/apiCall';
 
 //======SCSS======
 const Container = styled.div`
@@ -63,7 +67,16 @@ const EditContainer = styled.span`
     }
 `;
 
-const index = () => {
+const Users = () => {
+    const dispatch = useDispatch();
+
+    const { users, isLoadin, error } = useSelector((state) => state.user);
+
+    console.log(users);
+    useEffect(() => {
+        getAllUser(dispatch);
+        return () => {};
+    }, []);
     return (
         <Container>
             <Header>
@@ -88,7 +101,7 @@ const index = () => {
                             </th>
                             <th>#</th>
                             <th>Name</th>
-                            <th>Avatar</th>
+                            <th>Email</th>
                             <th>Role</th>
                             <th>Date</th>
                             <th>Status</th>
@@ -96,63 +109,35 @@ const index = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <input type="checkbox" />
-                            </td>
-                            <td>1</td>
-                            <td>Quang Pt</td>
-                            <td>Avatar</td>
-                            <td>Admin</td>
-                            <td>March 17,2023</td>
-                            <td>Pending</td>
-                            <td>
-                                <EditContainer>
-                                    <Edit />
-                                </EditContainer>
-                                <DeleteContainer>
-                                    <Delete />
-                                </DeleteContainer>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" />
-                            </td>
-                            <td>1</td>
-                            <td>Quang Pt</td>
-                            <td>Avatar</td>
-                            <td>Admin</td>
-                            <td>March 17,2023</td>
-                            <td>Pending</td>
-                            <td>
-                                <EditContainer>
-                                    <Edit />
-                                </EditContainer>
-                                <DeleteContainer>
-                                    <Delete />
-                                </DeleteContainer>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" />
-                            </td>
-                            <td>1</td>
-                            <td>Quang Pt</td>
-                            <td>Avatar</td>
-                            <td>Admin</td>
-                            <td>March 17,2023</td>
-                            <td>Pending</td>
-                            <td>
-                                <EditContainer>
-                                    <Edit />
-                                </EditContainer>
-                                <DeleteContainer>
-                                    <Delete />
-                                </DeleteContainer>
-                            </td>
-                        </tr>
+                        {users &&
+                            users.length > 0 &&
+                            users.map((item, index) => {
+                                return (
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" />
+                                        </td>
+                                        <td>{index + 1}</td>
+                                        <td>{item.username}</td>
+                                        <td>{item.email}</td>
+                                        <td>{item.isAdmin ? 'Admin' : 'Guest'}</td>
+                                        <td>
+                                            {moment(item.createdAt).format(
+                                                'HH:MM MMM DD,YYYY',
+                                            )}
+                                        </td>
+                                        <td>Pending</td>
+                                        <td>
+                                            <EditContainer>
+                                                <Edit />
+                                            </EditContainer>
+                                            <DeleteContainer>
+                                                <Delete />
+                                            </DeleteContainer>
+                                        </td>
+                                    </tr>
+                                );
+                            })}
                     </tbody>
                 </Table>
             </User>
@@ -160,4 +145,4 @@ const index = () => {
     );
 };
 
-export default index;
+export default Users;

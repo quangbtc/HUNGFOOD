@@ -1,5 +1,5 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import userSlice from './Redux/userSlice';
 import {
     persistStore,
@@ -18,7 +18,7 @@ const persistConfig = {
     key: 'root',
     version: 1,
     storage,
-    stateReconciler: autoMergeLevel2
+    stateReconciler: autoMergeLevel2,
 };
 const rootReducer = combineReducers({
     user: userSlice,
