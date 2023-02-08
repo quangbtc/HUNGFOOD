@@ -34,7 +34,7 @@ const Slider = ({ data,setting }) => {
     return () => {
       clearInterval(timerId)
     };
-  }, [index]);
+  }, [index,autoLoading,data.length,time]);
 
     return (
         <div className={cx('wrapper')}>
