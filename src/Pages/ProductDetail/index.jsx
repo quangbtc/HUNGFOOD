@@ -37,6 +37,8 @@ const Index = () => {
     const styles = show
         ? { overflowY: 'scroll', height: 'auto' }
         : { overflowY: 'hidden', height: '400px' };
+
+    console.log('check product', product);
     return (
         <div className={cx('wrapper')}>
             <div className={cx('top-content')}>

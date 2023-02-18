@@ -31,7 +31,6 @@ const Home = () => {
 
         return () => {};
     }, []);
-    console.log('Check product', products);
     return (
         <>
             <Slider data={dataSlide} setting={setting} />

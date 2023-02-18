@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 import Loading from '../../Components/Loading/Loading';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const Container = styled.div`
     background-color: white;
     position: relative;

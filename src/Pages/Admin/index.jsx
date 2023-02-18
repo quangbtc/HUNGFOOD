@@ -5,7 +5,9 @@ import Product from './Pages/Product/Product';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import AddProduct from './Pages/Product/AddProduct';
 import EditProduct from './Pages/Product/EditProduct';
-import User from "./Pages/User"
+import User from './Pages/User';
+import UserDetail from './Pages/User/UserDetail';
+
 
 const Index = () => {
     return (
@@ -29,7 +31,7 @@ const Index = () => {
                         </DashboardLayout>
                     }
                 />
-                   <Route
+                <Route
                     path="/product/add"
                     exact
                     element={
@@ -38,7 +40,7 @@ const Index = () => {
                         </DashboardLayout>
                     }
                 />
-                 <Route
+                <Route
                     path="/product/edit/:id"
                     exact
                     element={
@@ -56,6 +58,16 @@ const Index = () => {
                         </DashboardLayout>
                     }
                 />
+                <Route
+                    path="/user/profile"
+                    exact
+                    element={
+                        <DashboardLayout>
+                            <UserDetail />
+                        </DashboardLayout>
+                    }
+                />
+               
             </Routes>
         </div>
     );

@@ -8,8 +8,6 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     gap: 20px;
-    border-radius: 10px;
-    box-shadow: azure;
 `;
 
 const FeatureInfo = () => {

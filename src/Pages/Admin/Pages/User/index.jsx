@@ -1,11 +1,12 @@
-import { Delete, Edit } from '@mui/icons-material';
-import React, { useEffect } from 'react';
+import { Delete, Edit, Visibility } from '@mui/icons-material';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import moment from 'moment';
 import { Table } from 'reactstrap';
 import styled from 'styled-components';
 import { getAllUser } from '../../../../Redux/apiCall';
+import Pagination from '../../../../Components/Pagination';
 
 //======SCSS======
 const Container = styled.div`
@@ -66,17 +67,32 @@ const EditContainer = styled.span`
         color: blue;
     }
 `;
+const Detail = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: blue;
+    &:hover {
+        color: red;
+    }
+`;
 
 const Users = () => {
     const dispatch = useDispatch();
+    const [currentPage, setCurrentPage] = useState(1);
+    const limit = 5;
+    const { users, isLoading, error } = useSelector((state) => state.user);
 
-    const { users, isLoadin, error } = useSelector((state) => state.user);
-
-    console.log(users);
+    console.log('check users', users);
     useEffect(() => {
-        getAllUser(dispatch);
+        getAllUser(dispatch, { page: currentPage, limit: limit });
         return () => {};
-    }, []);
+    }, [currentPage]);
+    const onPageChange = (newPage) => {
+        setCurrentPage(newPage);
+    };
+    const totalPage = users.total;
     return (
         <Container>
             <Header>
@@ -100,18 +116,19 @@ const Users = () => {
                                 <input type="checkbox" />
                             </th>
                             <th>#</th>
-                            <th>Name</th>
+                            <th>Tên</th>
                             <th>Email</th>
-                            <th>Role</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th>Chức vụ</th>
+                            <th>Ngày tháng</th>
+                            <th>Trạng thái</th>
+                            <th>Tác vụ</th>
+                            <th>Xem chi tiết</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {users &&
-                            users.length > 0 &&
-                            users.map((item, index) => {
+                        {users.data &&
+                            users.data.length > 0 &&
+                            users.data.map((item, index) => {
                                 return (
                                     <tr>
                                         <td>
@@ -135,11 +152,22 @@ const Users = () => {
                                                 <Delete />
                                             </DeleteContainer>
                                         </td>
+                                        <td>
+                                            <Detail>
+                                                <Visibility />
+                                            </Detail>
+                                        </td>
                                     </tr>
                                 );
                             })}
                     </tbody>
                 </Table>
+
+                <Pagination
+                    onPageChange={onPageChange}
+                    totalPages={totalPage}
+                    currentPage={currentPage}
+                />
             </User>
         </Container>
     );

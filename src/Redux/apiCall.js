@@ -28,10 +28,10 @@ export const signIn = async (dispatch, user) => {
         dispatch(loginFail());
     }
 };
-export const getAllUser = async (dispatch) => {
+export const getAllUser = async (dispatch, data) => {
     dispatch(getAllUserStart());
     try {
-        const res = await UserApi.getAllUser();
+        const res = await UserApi.getAllUser(data);
         dispatch(getAllUserSuccess(res.data));
     } catch (error) {
         dispatch(getAllUserFail());

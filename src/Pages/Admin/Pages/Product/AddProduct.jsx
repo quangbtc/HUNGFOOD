@@ -207,9 +207,6 @@ const AddProduct = () => {
         setPreviewThumb((prev) => [...prev]);
         setProductThumbs((prev) => [...prev]);
     };
-
-    console.log('check ', preViewThumb);
-    console.log('check thums ', productThumbs);
     const getContent = (data) => {
         setContent(data);
     };

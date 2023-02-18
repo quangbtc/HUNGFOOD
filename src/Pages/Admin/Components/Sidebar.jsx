@@ -13,7 +13,7 @@ import styled from 'styled-components';
 import { ipad } from '../../../responsive';
 
 const Container = styled.div`
-    background-color: burlywood;
+    background-color: lightblue;
     min-height: 100vh;
 `;
 const Header = styled.div`
@@ -23,7 +23,7 @@ const Header = styled.div`
 `;
 
 const Content = styled.div`
-    width: 180px;
+    min-width: 200px;
     ${ipad({
         width: 'auto',
     })}
@@ -33,11 +33,11 @@ const List = styled.ul`
     padding: 5px 0px;
     .link {
         text-decoration: none;
-        color: white;
+        color: #333;
     }
 `;
 const Item = styled.li`
-    margin: 5px 0px;
+    margin: 5px 10px;
     padding: 5px 10px;
     border-radius: 20px;
     ${ipad({
@@ -50,7 +50,7 @@ const Item = styled.li`
         alignItem: 'center',
         justifyContent: 'center',
     })}
-    background-color: ${(props) => (props.type === true ? 'goldenrod' : '')};
+    background-color: ${(props) => (props.type === true ? 'green' : '')};
 
     .icon {
         margin-right: 10px;
@@ -60,8 +60,8 @@ const Item = styled.li`
     }
     cursor: pointer;
     &:hover {
-        background-color: goldenrod;
-        color: white;
+        background-color: green;
+        color: #333;
     }
 `;
 const Name = styled.span`

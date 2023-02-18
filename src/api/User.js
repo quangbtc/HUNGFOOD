@@ -1,7 +1,7 @@
 import {publicRequest} from './requestMethod';
 const UserApi = {
-    getAllUser: () => {
-        const url = '/user';
+    getAllUser: (data) => {
+        const url = `/user/?page=${data.page}&limit=${data.limit}`;
         return publicRequest.get(url);
 
     },
